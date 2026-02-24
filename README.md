@@ -1,8 +1,19 @@
 # Azure Windows VM Deployment – Architecture Case Study
 
-## 📌 Overview
+## 🎯 Executive Summary
+This project documents the deployment of a Windows Virtual Machine in Azure within a custom Virtual Network in North Europe.
+The objective is not only to deploy infrastructure, but to analyze design decisions, security implications, and potential production improvements.
 
+## 📌 Overview
 This lab demonstrates the deployment of a Windows Virtual Machine inside a dedicated Azure Virtual Network.
+
+## 🏷 Architecture Classification
+
+- Architecture Type: Single-tier
+- Availability Model: Single instance
+- Exposure Model: Internet-facing
+- Environment Type: Lab / Test
+  
 
 **Deployment Context**
 
@@ -38,14 +49,15 @@ NSG --> NIC
 
 ---
 
-## 🖼 Azure Portal Topology (Actual Deployment)
+### 🔗 Dependency Chain
+Compute → Network Interface → Subnet → Virtual Network → Resource Group
 
+## 🖼 Azure Portal Topology (Actual Deployment)
 ![Azure Deployment](assets/azure-topology.png)
 
 ---
 
 ## 📌 Design Decisions
-
 - Single-tier architecture for simplicity.
 - NSG associated at NIC level.
 - Public IP enabled for direct RDP access (lab environment).
@@ -54,17 +66,15 @@ NSG --> NIC
 ---
 
 ## ⚖️ Trade-Off Analysis
-
 | Decision | Benefit | Risk |
 |----------|----------|------|
-| Public IP on VM | Easy access | Increased attack surface |
+Public IP on VM | Simple remote access | Increased attack surface & brute-force risk
 | Single VM | Low cost | No high availability |
 | No Load Balancer | Simplicity | No scalability |
 
 ---
 
 ## 🚀 Production Evolution
-
 - Remove Public IP
 - Implement Azure Bastion
 - Deploy VM in Availability Zone
@@ -74,20 +84,15 @@ NSG --> NIC
 ---
 
 ## 📚 Learning Outcome
-
 This lab reinforces:
-
 - Azure networking fundamentals
 - NSG traffic filtering
 - VM dependency on networking
 - Basic security posture analysis
 
 ## 🔍 Why This Matters
-
 Even a simple VM deployment demonstrates the dependency chain in Azure:
-
 Compute depends on Networking  
 Networking depends on Security configuration  
 Security impacts exposure and risk  
-
 Understanding these relationships is fundamental for designing scalable and secure cloud architectures.
