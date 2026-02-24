@@ -1,14 +1,16 @@
 flowchart TB
 
-RG["Resource Group"]
-VNet["Virtual Network"]
-Subnet["Subnet"]
+RG["Resource Group: test-vnet"]
+VNet["Virtual Network: vnet-northeurope"]
+Subnet["Subnet: snet-northeurope-1"]
+NSG["Network Security Group: first-VM-nsg"]
+PublicIP["Public IP: first-VM-ip"]
 NIC["Network Interface"]
-PublicIP["Public IP"]
-VM["Linux VM"]
+VM["Windows VM: first-VM"]
 
 RG --> VNet
 VNet --> Subnet
 Subnet --> NIC
 NIC --> VM
 NIC --> PublicIP
+NSG --> NIC
