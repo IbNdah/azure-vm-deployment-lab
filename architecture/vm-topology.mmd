@@ -1,0 +1,14 @@
+flowchart TB
+
+RG["Resource Group"]
+VNet["Virtual Network"]
+Subnet["Subnet"]
+NIC["Network Interface"]
+PublicIP["Public IP"]
+VM["Linux VM"]
+
+RG --> VNet
+VNet --> Subnet
+Subnet --> NIC
+NIC --> VM
+NIC --> PublicIP

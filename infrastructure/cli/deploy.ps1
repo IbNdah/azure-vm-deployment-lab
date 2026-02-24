@@ -1,0 +1,1 @@
+infrastructure/cli/deploy.ps1
