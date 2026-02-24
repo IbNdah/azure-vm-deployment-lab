@@ -21,7 +21,6 @@ All resources are deployed in:
 | Public IP | first-VM-ip |
 | Windows VM | first-VM |
 
----
 
 ## 🏗 Architecture Diagram
 
@@ -42,6 +41,7 @@ Subnet --> NIC
 NIC --> VM
 NIC --> PublicIP
 NSG --> NIC
+```
 
 🔐 Security Notes
 - VM is internet-facing via Public IP
@@ -61,8 +61,4 @@ NSG --> NIC
 - Add Availability Zone
 - Enable Azure Monitor
 
----
-
-
-
-
+  
