@@ -1,39 +1,32 @@
-# Azure Windows VM Deployment – North Europe
+# Azure Windows VM Deployment – Architecture Case Study
 
 ## 📌 Overview
 
 This lab demonstrates the deployment of a Windows Virtual Machine inside a dedicated Azure Virtual Network.
 
-All resources are deployed in:
+**Deployment Context**
 
-- **Resource Group:** test-vnet  
-- **Region:** North Europe  
+- Resource Group: test-vnet
+- Region: North Europe
+- Virtual Network: vnet-northeurope
+- Subnet: snet-northeurope-1
+- Network Security Group: first-VM-nsg
+- Public IP: first-VM-ip
+- Virtual Machine: first-VM
 
 ---
 
-## 🏗 Deployed Resources
-
-| Resource Type | Name |
-|---------------|------|
-| Virtual Network | vnet-northeurope |
-| Subnet | snet-northeurope-1 |
-| Network Security Group | first-VM-nsg |
-| Public IP | first-VM-ip |
-| Windows VM | first-VM |
-
-
-## 🏗 Architecture Diagram
+## 🧠 Logical Architecture
 
 ```mermaid
 flowchart TB
-
-RG["Resource Group: test-vnet"]
-VNet["Virtual Network: vnet-northeurope"]
-Subnet["Subnet: snet-northeurope-1"]
-NSG["Network Security Group: first-VM-nsg"]
-PublicIP["Public IP: first-VM-ip"]
+RG["test-vnet"]
+VNet["vnet-northeurope"]
+Subnet["snet-northeurope-1"]
+NSG["first-VM-nsg"]
+PublicIP["first-VM-ip"]
 NIC["Network Interface"]
-VM["Windows VM: first-VM"]
+VM["Windows VM"]
 
 RG --> VNet
 VNet --> Subnet
@@ -43,22 +36,48 @@ NIC --> PublicIP
 NSG --> NIC
 ```
 
-🔐 Security Notes
-- VM is internet-facing via Public IP
-- NSG controls inbound traffic
-- RDP access should be restricted to trusted IPs
-- Not production-ready (lab environment)
+---
 
-🧠 Architectural Observations
-- Single-tier architecture
-- No availability zone
-- No load balancer
-- No monitoring configured
+## 🖼 Azure Portal Topology (Actual Deployment)
 
-🚀 Future Improvements
+![Azure Deployment](assets/azure-topology.png)
+
+---
+
+## 📌 Design Decisions
+
+- Single-tier architecture for simplicity.
+- NSG associated at NIC level.
+- Public IP enabled for direct RDP access (lab environment).
+- All resources deployed in North Europe.
+
+---
+
+## ⚖️ Trade-Off Analysis
+
+| Decision | Benefit | Risk |
+|----------|----------|------|
+| Public IP on VM | Easy access | Increased attack surface |
+| Single VM | Low cost | No high availability |
+| No Load Balancer | Simplicity | No scalability |
+
+---
+
+## 🚀 Production Evolution
+
 - Remove Public IP
 - Implement Azure Bastion
-- Add Availability Zone
+- Deploy VM in Availability Zone
 - Enable Azure Monitor
+- Enable Microsoft Defender for Cloud
 
-  
+---
+
+## 📚 Learning Outcome
+
+This lab reinforces:
+
+- Azure networking fundamentals
+- NSG traffic filtering
+- VM dependency on networking
+- Basic security posture analysis
