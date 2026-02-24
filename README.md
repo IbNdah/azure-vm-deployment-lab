@@ -81,3 +81,13 @@ This lab reinforces:
 - NSG traffic filtering
 - VM dependency on networking
 - Basic security posture analysis
+
+## 🔍 Why This Matters
+
+Even a simple VM deployment demonstrates the dependency chain in Azure:
+
+Compute depends on Networking  
+Networking depends on Security configuration  
+Security impacts exposure and risk  
+
+Understanding these relationships is fundamental for designing scalable and secure cloud architectures.
