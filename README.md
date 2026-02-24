@@ -2,29 +2,36 @@
 
 ## 📌 Overview
 
-This lab demonstrates the deployment of a Windows Virtual Machine in Azure.
+This lab demonstrates the deployment of a Windows Virtual Machine inside a dedicated Azure Virtual Network.
 
-### Deployment Details
+All resources are deployed in:
 
-- Resource Group: test-vnet
-- Region: North Europe
-- Virtual Network: vnet-northeurope
-- Subnet: snet-northeurope-1
-- Network Security Group: first-VM-nsg
-- Public IP: first-VM-ip
-- Windows VM: first-VM
+- **Resource Group:** test-vnet  
+- **Region:** North Europe  
 
 ---
 
-## 🏗 Architecture
+## 🏗 Deployed Resources
+
+| Resource Type | Name |
+|---------------|------|
+| Virtual Network | vnet-northeurope |
+| Subnet | snet-northeurope-1 |
+| Network Security Group | first-VM-nsg |
+| Public IP | first-VM-ip |
+| Windows VM | first-VM |
+
+---
+
+## 🏗 Architecture Diagram
 
 ```mermaid
 flowchart TB
 
 RG["Resource Group: test-vnet"]
-VNet["VNet: vnet-northeurope"]
+VNet["Virtual Network: vnet-northeurope"]
 Subnet["Subnet: snet-northeurope-1"]
-NSG["NSG: first-VM-nsg"]
+NSG["Network Security Group: first-VM-nsg"]
 PublicIP["Public IP: first-VM-ip"]
 NIC["Network Interface"]
 VM["Windows VM: first-VM"]
@@ -35,8 +42,6 @@ Subnet --> NIC
 NIC --> VM
 NIC --> PublicIP
 NSG --> NIC
-
-
 
 🔐 Security Notes
 - VM is internet-facing via Public IP
@@ -55,3 +60,9 @@ NSG --> NIC
 - Implement Azure Bastion
 - Add Availability Zone
 - Enable Azure Monitor
+
+---
+
+
+
+
