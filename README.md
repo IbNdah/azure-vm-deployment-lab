@@ -79,7 +79,7 @@ Compute → Network Interface → Subnet → Virtual Network → Resource Group
 
 ## 🖼 Azure Portal Topology (Actual Deployment)
 
-![Azure Deployment](assets/azure-topology.png)
+![Azure Deployment](assets/vm-architecture.png)
 
 ---
 
